@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let ultimaCertificacion = null;
 
     // URL de tu backend en Render (¡cambia esto si usas otro dominio!)
-    const BACKEND_URL = 'https://certifier-backend.onrender.com';
+    const BACKEND_URL = 'https://api.testrobert.work.gd';
 
     // Modal de verificación
     const modal = document.getElementById('modal-verificar');
