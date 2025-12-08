@@ -51,10 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo', archivo);
         formData.append('propietario', propietario);
 
-        fetch(`${BACKEND_URL}/api/certificar`, {
-            method: 'POST',
-            body: formData
-        })
+       fetch('https://certifier-backend.onrender.com/api/certificar', {
+    method: 'POST',
+    body: formData
+       })
         .then(res => res.json())
         .then(data => {
             if (data.success) {
