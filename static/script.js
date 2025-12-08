@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo', archivo);
         formData.append('hash_original', hashOriginal);
 
-        fetch(`${BACKEND_URL}/api/verificar`, {
+        fetch('https://certifier-backend.onrender.com/api/verificar', {
             method: 'POST',
             body: formData
         })
@@ -131,7 +131,7 @@ Hash actual:    ${data.hash_actual}
             return;
         }
 
-        fetch(`${BACKEND_URL}/api/guardar-certificado`, {
+        fetch('https://certifier-backend.onrender.com/api/guardar-certificado', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ certificacion: ultimaCertificacion })
