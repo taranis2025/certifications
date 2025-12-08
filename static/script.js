@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let ultimaCertificacion = null;
 
+    // URL de tu backend en Render (¡cambia esto si usas otro dominio!)
+    const BACKEND_URL = 'https://certifier-backend.onrender.com';
+
     // Modal de verificación
     const modal = document.getElementById('modal-verificar');
     const span = document.getElementsByClassName('close')[0];
@@ -48,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo', archivo);
         formData.append('propietario', propietario);
 
-        fetch('/api/certificar', {
+        fetch(`${BACKEND_URL}/api/certificar`, {
             method: 'POST',
             body: formData
         })
@@ -79,7 +82,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
         .catch(err => {
-            mostrarResultado(`❌ Error de red: ${err.message}`, true);
+            console.error('Error de red:', err);
+            mostrarResultado(`❌ Error de red: ${err.message}\n\nAbre la consola (F12) para más detalles.`, true);
         });
     }
 
@@ -94,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo', archivo);
         formData.append('hash_original', hashOriginal);
 
-        fetch('/api/verificar', {
+        fetch(`${BACKEND_URL}/api/verificar`, {
             method: 'POST',
             body: formData
         })
@@ -116,6 +120,7 @@ Hash actual:    ${data.hash_actual}
             }
         })
         .catch(err => {
+            console.error('Error de red:', err);
             mostrarResultado(`❌ Error de red: ${err.message}`, true);
         });
     }
@@ -126,7 +131,7 @@ Hash actual:    ${data.hash_actual}
             return;
         }
 
-        fetch('/api/guardar-certificado', {
+        fetch(`${BACKEND_URL}/api/guardar-certificado`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ certificacion: ultimaCertificacion })
@@ -135,7 +140,7 @@ Hash actual:    ${data.hash_actual}
             if (response.ok) {
                 return response.blob();
             }
-            throw new Error('Error al guardar');
+            throw new Error('Error al guardar el certificado');
         })
         .then(blob => {
             const url = window.URL.createObjectURL(blob);
@@ -148,6 +153,7 @@ Hash actual:    ${data.hash_actual}
             a.remove();
         })
         .catch(err => {
+            console.error('Error al guardar:', err);
             alert('Error al descargar: ' + err.message);
         });
     }
