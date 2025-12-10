@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let ultimaCertificacion = null;
 
     // URL de tu backend en Render (¡cambia esto si usas otro dominio!)
-    const BACKEND_URL = 'https://api.testrobert.work.gd';
+    const BACKEND_URL = 'https://certifier-backend.onrender.com';
 
     // Modal de verificación
     const modal = document.getElementById('modal-verificar');
@@ -51,10 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo', archivo);
         formData.append('propietario', propietario);
 
-       fetch('https://certifier-backend.onrender.com/api/certificar', {
-    method: 'POST',
-    body: formData
-       })
+       fetch('https://certifier-backend.onrender.com/api/certificar', {method: 'POST', body: formData})
         .then(res => res.json())
         .then(data => {
             if (data.success) {
