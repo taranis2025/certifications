@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let ultimaCertificacion = null;
 
-    // URL de tu backend en Render (¡cambia esto si usas otro dominio!)
+    // URL de tu backend en Render (¡sin espacios al final!)
     const BACKEND_URL = 'https://certifier-backend.onrender.com';
 
     // Modal de verificación
@@ -51,7 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo', archivo);
         formData.append('propietario', propietario);
 
-       fetch('https://certifier-backend.onrender.com/api/certificar', {method: 'POST', body: formData})
+        fetch(`${BACKEND_URL}/api/certificar`, {
+            method: 'POST',
+            body: formData
+        })
         .then(res => res.json())
         .then(data => {
             if (data.success) {
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('archivo', archivo);
         formData.append('hash_original', hashOriginal);
 
-        fetch('https://certifier-backend.onrender.com/api/verificar', {
+        fetch(`${BACKEND_URL}/api/verificar`, {
             method: 'POST',
             body: formData
         })
@@ -128,7 +131,7 @@ Hash actual:    ${data.hash_actual}
             return;
         }
 
-        fetch('https://certifier-backend.onrender.com/api/guardar-certificado', {
+        fetch(`${BACKEND_URL}/api/guardar-certificado`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ certificacion: ultimaCertificacion })
