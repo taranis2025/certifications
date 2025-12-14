@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let ultimaCertificacion = null;
 
     // URL de tu backend en Render (¡sin espacios al final!)
-    const BACKEND_URL = 'https://certifier-backend.onrender.com';
+    const BACKEND_URL = 'https://certifier-backend.up.railway.app';
 
     // Modal de verificación
     const modal = document.getElementById('modal-verificar');
