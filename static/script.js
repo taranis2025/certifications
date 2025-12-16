@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let ultimaCertificacion = null;
 
-    // URL de tu backend en Render (¡sin espacios al final!)
+    // ✅ URL de tu backend en Railway (¡sin espacios!)
     const BACKEND_URL = 'https://certifier-backend.up.railway.app';
 
     // Modal de verificación
