@@ -1,6 +1,6 @@
 // static/script.js
 document.addEventListener('DOMContentLoaded', () => {
-    const BACKEND_URL = 'https://certifier-backend.up.railway.app'; // ✅ Sin espacios
+    const BACKEND_URL = 'https://certifier-backend.onrender.com'; // ✅ Sin espacios
 
     const archivoInput = document.getElementById('archivo');
     const propietarioInput = document.getElementById('propietario');
